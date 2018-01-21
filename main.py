@@ -36,10 +36,26 @@ class AboutHandler(BaseHandler):
     def get(self):
         fecha = time.strftime("%X")
         params = {"fecha": fecha}
-        return self.render_template("about.html", params=params)
+        return self.render_template("about_me.html", params=params)
+
+class MyProjectsHandler(BaseHandler):
+    def get(self):
+        return self.render_template("my_projects.html")
+
+class BlogHandler(BlogHandler):
+    def get(self):
+        return self.render_template("blog.html")
+
+class ContactHandler(ContactHandler):
+    def get(self):
+        return self.render_template("contact.html")
 
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
     webapp2.Route('/about', AboutHandler),
+    webapp2.Route('/my-projects', MyProjectsHandler),
+    webapp2.Route('/blog', BlogHandler),
+    webapp2.Route('/contact', ContactHandler),
+
 ], debug=True)
