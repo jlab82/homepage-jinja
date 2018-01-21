@@ -32,23 +32,28 @@ class MainHandler(BaseHandler):
     def get(self):
         return self.render_template("index.html")
 
+
 class AboutHandler(BaseHandler):
     def get(self):
         fecha = time.strftime("%X")
         params = {"fecha": fecha}
         return self.render_template("about_me.html", params=params)
 
+
 class MyProjectsHandler(BaseHandler):
     def get(self):
         return self.render_template("my_projects.html")
 
-class BlogHandler(BlogHandler):
+
+class BlogHandler(BaseHandler):
     def get(self):
         return self.render_template("blog.html")
 
-class ContactHandler(ContactHandler):
+
+class ContactHandler(BaseHandler):
     def get(self):
         return self.render_template("contact.html")
+
 
 
 app = webapp2.WSGIApplication([
